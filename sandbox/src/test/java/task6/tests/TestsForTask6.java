@@ -2,16 +2,23 @@ package task6.tests;
 
 
 import com.beust.jcommander.Parameter;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TestsForTask6 extends TestBase {
 
 
-
   @Test()
-public void searchForSpecificGameOnVegasCasinoTest()
+  public void searchForSpecificGameOnVegasCasinoTest()
 
   {
-app.menu().selectMagnifierButton();
-app.menu().searchFor("Mayfair Roulette");
-  }}
+
+    String gameToPay = "Mayfair Roulette";
+
+    app.menu().selectMagnifierButton();
+    app.menu().searchFor(gameToPay);
+    app.game().select(gameToPay);
+    app.game().play(gameToPay);
+    //Assert
+  }
+}

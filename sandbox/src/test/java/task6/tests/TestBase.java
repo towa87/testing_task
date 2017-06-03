@@ -10,11 +10,13 @@ import java.io.IOException;
 
 public class TestBase {
 
-ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
+ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.FIREFOX));
 
   @BeforeSuite
   public void setUp() throws IOException {
     app.init();
+    app.goTo().homePage();
+
   }
   @AfterSuite(alwaysRun = true)
   public void tearDown(){

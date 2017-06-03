@@ -11,5 +11,9 @@ public class NavigationHelper extends HelperBase{
   }
 
 
+  public void homePage() {
+
+
+  }
 }
 
