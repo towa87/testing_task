@@ -10,10 +10,10 @@ public class SessionHelper extends HelperBase {
   }
 
   public void login(String username, String password) {
-
-    type(By.id("username"), username);
-    type(By.id("password"), password);
-    click(By.xpath("//div[7]/div[1]/div/div[3]/div[2]/div/fieldset/div/form[2]/div[2]/input"));
+    click(By.xpath("//a[@id='accountTabButton']/span[2]/span"));
+    type(By.id("loginUsernameInput"), username);
+    type(By.id("loginPasswordInput"), password);
+    click(By.id("loginButton"));
 
   }
 }

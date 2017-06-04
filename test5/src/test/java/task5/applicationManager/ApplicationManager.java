@@ -22,8 +22,8 @@ public class ApplicationManager {
   WebDriver wd;
 
   private NavigationHelper navigationHelper;
-  private GameHelper gameHelper;
   private SessionHelper sessionHelper;
+  private  FootballPage footballPage;
 
 
   public ApplicationManager(String browser) {
@@ -47,10 +47,10 @@ public class ApplicationManager {
     wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     wd.get(properties.getProperty("web.baseURL"));
     navigationHelper = new NavigationHelper(wd);
-    gameHelper = new GameHelper(wd);
-    menuHelper = new MenuHelper(wd);
-sessionHelper = new SessionHelper(wd);
-   sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
+    sessionHelper = new SessionHelper(wd);
+   footballPage = new FootballPage(wd);
+
+    sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
 
   }
 
@@ -64,11 +64,7 @@ sessionHelper = new SessionHelper(wd);
     return navigationHelper;
   }
 
-  public MenuHelper menu() {
-    return menuHelper;
-  }
-  public GameHelper game(){return gameHelper;}
-
+  public  FootballPage useFootballPage(){return  footballPage;}
 }
 
 
