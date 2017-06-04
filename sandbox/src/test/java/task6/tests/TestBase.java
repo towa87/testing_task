@@ -15,7 +15,7 @@ ApplicationManager app = new ApplicationManager(System.getProperty("browser", Br
   @BeforeSuite
   public void setUp() throws IOException {
     app.init();
-    app.goTo().homePage();
+
 
   }
   @AfterSuite(alwaysRun = true)

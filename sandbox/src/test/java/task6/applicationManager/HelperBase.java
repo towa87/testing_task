@@ -4,7 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
+import java.util.logging.Logger;
+
 public class HelperBase {
+  private static final Logger LOGGER = Logger.getLogger(HelperBase.class.getName() );
   protected WebDriver wd;
 
   public HelperBase(WebDriver wd) {

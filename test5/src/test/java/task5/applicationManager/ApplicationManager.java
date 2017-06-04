@@ -11,9 +11,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 
 public class ApplicationManager {
+  private static final Logger LOGGER = Logger.getLogger(ApplicationManager.class.getName());
 
 
   private final Properties properties;
@@ -23,7 +25,7 @@ public class ApplicationManager {
 
   private NavigationHelper navigationHelper;
   private SessionHelper sessionHelper;
-  private  FootballPage footballPage;
+  private FootballPage footballPage;
 
 
   public ApplicationManager(String browser) {
@@ -36,6 +38,8 @@ public class ApplicationManager {
 
     String target = System.getProperty("target", "prod");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+    LOGGER.info("property file was uploaded");
+
     if (browser.equals(BrowserType.FIREFOX)) {
       wd = new FirefoxDriver();
     } else if (browser.equals(BrowserType.CHROME)) {
@@ -44,11 +48,15 @@ public class ApplicationManager {
     if (browser.equals(BrowserType.IE)) {
       wd = new InternetExplorerDriver();
     }
+    LOGGER.info("Browser was selected");
+
     wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     wd.get(properties.getProperty("web.baseURL"));
+    LOGGER.info("URL was selected");
+
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
-   footballPage = new FootballPage(wd);
+    footballPage = new FootballPage(wd);
 
     sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
 
@@ -64,7 +72,9 @@ public class ApplicationManager {
     return navigationHelper;
   }
 
-  public  FootballPage useFootballPage(){return  footballPage;}
+  public FootballPage useFootballPage() {
+    return footballPage;
+  }
 }
 
 
