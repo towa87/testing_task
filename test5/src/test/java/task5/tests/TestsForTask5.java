@@ -16,6 +16,7 @@ public class TestsForTask5 extends TestBase {
   @DataProvider
   public Iterator<Object[]> valuesToCheck() throws IOException {
     List<Object[]> list = new ArrayList<Object[]>();
+    //set up values which should be sent to the test
     Double bidValue = 0.05;
     Double expectedReturnedOffered = 0.08;
     List<Object> listOfInputData = Arrays.asList(bidValue, expectedReturnedOffered);
@@ -35,6 +36,7 @@ public class TestsForTask5 extends TestBase {
     app.useFootballPage().placeBid();
     app.useFootballPage().checkReturnedOffered();
     Double expectedReturnedOffered = valuesToCheck.get(1);
+    //Check that offered value is correspond to expected result
     Assert.assertEquals(app.useFootballPage().checkReturnedOffered(), expectedReturnedOffered);
     LOGGER.info("Test searchForSpecificGameOnVegasCasinoTest was finished" );
   }

@@ -43,6 +43,8 @@ public class ApplicationManager {
     if (browser.equals(BrowserType.FIREFOX)) {
       wd = new FirefoxDriver();
     } else if (browser.equals(BrowserType.CHROME)) {
+      System.setProperty("webdriver.chrome.driver", "\\src\\test\\resources\\chromedriver.exe");
+
       wd = new ChromeDriver();
     }
     if (browser.equals(BrowserType.IE)) {

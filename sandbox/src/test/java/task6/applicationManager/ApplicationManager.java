@@ -19,7 +19,6 @@ public class ApplicationManager {
 
   private final Properties properties;
   private String browser;
-
   WebDriver wd;
 
   private GameHelper gameHelper;
@@ -42,6 +41,7 @@ public class ApplicationManager {
       wd = new FirefoxDriver();
       LOGGER.info("Firefox was selected");
     } else if (browser.equals(BrowserType.CHROME)) {
+      System.setProperty("webdriver.chrome.driver", "\\src\\test\\resources\\chromedriver.exe");
       wd = new ChromeDriver();
       LOGGER.info("Chrome was selected");
     }
