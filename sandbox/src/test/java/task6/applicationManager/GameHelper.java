@@ -18,8 +18,10 @@ public class GameHelper extends HelperBase {
   public void select(String nameOfTheGame) {
 
 
+
     Actions actions = new Actions(wd);
-    WebElement game = wd.findElement(By.xpath("//div[contains(text(), 'Mayfair Roulette')]"));
+    WebElement game = wd.findElement(By.xpath("//div[contains(text(), '"+ nameOfTheGame + "')]"));
+
 
     actions.moveToElement(game).click().build().perform();
    new Actions(wd).moveToElement(wd.findElement(By.xpath("//div[@class='tiles-container__row']//button[.='More ']"))).build().perform();

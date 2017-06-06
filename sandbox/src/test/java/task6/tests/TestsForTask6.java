@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +25,7 @@ public class TestsForTask6 extends TestBase {
     return list.iterator();
   }
   @Test(dataProvider = "valuesToCheck")
-  public void searchForSpecificGameOnVegasCasinoTest(String gameToPay)
+  public void searchForSpecificGameOnVegasCasinoTest(String gameToPay) throws AWTException
 
   {
 
